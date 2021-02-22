@@ -2,95 +2,95 @@
 //  Parameters and UI
 // -------------------
 
+//RECTANGLES
+// const gui = new dat.GUI()
+// const params = {
+//     N: 140,
+//     Random_Seed: 0,
+//     p: 0.5,
+//     Transparence : 125,
+//     Download_Image: () => save(),
+// }
+// gui.add(params, "N", 0, 1000, 1)
+// gui.add(params, "p", 0, 1, 0.001)
+// gui.add(params, "Transparence", 0, 255, 1)
+// gui.add(params, "Random_Seed", 0, 100, 1)
+// gui.add(params, "Download_Image")
+
+
+//ELLIPSES
 const gui = new dat.GUI()
 const params = {
-    Ellipse_Size: 30,
+    N: 400,
+    Random_Seed: 0,
     Download_Image: () => save(),
 }
-gui.add(params, "Ellipse_Size", 0, 100, 1)
+gui.add(params, "N", 0, 1000, 1)
+gui.add(params, "Random_Seed", 0, 100, 1)
 gui.add(params, "Download_Image")
+
+//ROSACE
+// const gui = new dat.GUI()
+// const params = {
+//     N: 6,
+//     Random_Seed: 0,
+//     Base_Size:0.8,
+//     Size_Ratio: 1,
+//     Stroke_Weight
+//     Download_Image: () => save(),
+// }
+// gui.add(params, "N", 0, 1000, 1)
+// gui.add(params, "Random_Seed", 0, 100, 1)
+// gui.add(params, "Download_Image")
 
 // -------------------
 //       Drawing
 // -------------------
 
+
+//RECTANGLES
+// function draw() {
+//     randomSeed(params.Random_Seed)
+//     background('white')
+//     noStroke()
+//     rectMode(CENTER)
+//     for (let i = 0; i < params.N; i++) {
+//         fill(random([
+//             color(41,50,127, params.Transparence), 
+//             color(72,161,179, params.Transparence),
+//             color(235,86,118, params.Transparence)
+//         ]))
+//         push()
+//         translate(random(width), random(height))
+//         if (random(0,1) < params.p){
+//             rotate(TAU/4)
+//         }
+//         rect(0, 0, random(40,100), random(10, 30))
+//         pop()
+//     }
+
+//     // ellipse(mouseX, mouseY, params.Ellipse_Size)
+// }
+
+
+//ELLIPSES
 function draw() {
-    background('black')
+    randomSeed(params.Random_Seed)
+    background('#1D1A37')
     noStroke()
-    // rectMode(CENTER)
-    // fill('#fa7b0c')
-    // stroke(255,0,0,200)
-    // rect(width/2, height/2, 40, 20)
-    // fill('red')
-    // triangle(100,10,40,50,200,200)
-    // line(100,10,40,50)
-
-    // EXERCICE 1 MAISON
-    // background('#6e7055')
-    // fill('#544034')
-    // rect(width/2, height-height/8, width, height/4)
-
-    // rectMode(CENTER)
-    // fill('#bfb2a6')
-    // rect(width/2, height/2, width/3, height/2)
-
-    // fill('#5c372e')
-    // triangle(width/3, height/2-height/4,
-    //     width - width/3, height/2-height/4,
-    //     width/2, 50)
-
-    // EXERCICE 2 MICKEY
-    // background('white')
-    // rectMode(CENTER)
-    // fill('black')
-    // ellipse(width/2, height/2, width/2)
-    // ellipse(width/2-width/4, height/2-height/4, width/4)
-    // ellipse(width/2+width/4, height/2-height/4, width/4)
-
-    // EXERCICE 3 FACE
-    background('#3C413B')
-    fill('#7B3F31')
-    ellipse(width/2, height/3, width/1.8, width/3)
-    ellipse(width/2-width/4, height/2-height/8, width/4)
-    ellipse(width/2+width/4, height/2-height/8, width/4)
-    fill('#FED7BC')
-    ellipse(width/2, height/2, width/2)
-
-    fill('#FDFEFF')
-    ellipse(width/2-80, height/2-30, 100, 50)
-    ellipse(width/2+80, height/2-30, 100, 50)
-
-    fill('#5BAA5E')
-    ellipse(width/2-80, height/2-30, 30)
-    ellipse(width/2+80, height/2-30, 30)
-    fill('black')
-    ellipse(width/2-80, height/2-30, 10)
-    ellipse(width/2+80, height/2-30, 10)
-
-    fill('#7B3F31')
-    triangle(width/2-140, height/2-40,width/2-40, height/2-40,width/2-40, height/2-80)
-    triangle(width/2+140, height/2-40,width/2+40, height/2-40,width/2+40, height/2-80)
-
-    fill('#C37A6C')
-    triangle(width/2-40, height/2+20,width/2+40, height/2+20,width/2, height/2)
-
-    fill('#FDF6CC')
     rectMode(CENTER)
-    stroke('#DC7D77')
-    strokeWeight(4)
-    rect(width/2, height/2+80, 180, 80)
-
-    fill('#CCC7A5')
-    noStroke()
-    rect(width/2, height/2+80, 400, 4)
-    
-
-    
-    
-
-
-    ellipse(mouseX, mouseY, params.Ellipse_Size)
+    fill(255,255,255,20)
+    for (let i = 0; i < params.N/2; i++) {
+        ellipse(random(width/4,width-width/4), random(height/4,height-height/4), random(20,80))
+        ellipse(random(0,width), random(0,height), random(20,80))
+    }
 }
+
+//ROSACE (pas fait)
+// function draw() {
+//     randomSeed(params.Random_Seed)
+//     background('black')
+// }
 
 // -------------------
 //    Initialization

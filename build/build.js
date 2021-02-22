@@ -1,43 +1,22 @@
 var gui = new dat.GUI();
 var params = {
-    Ellipse_Size: 30,
+    N: 400,
+    Random_Seed: 0,
     Download_Image: function () { return save(); },
 };
-gui.add(params, "Ellipse_Size", 0, 100, 1);
+gui.add(params, "N", 0, 1000, 1);
+gui.add(params, "Random_Seed", 0, 100, 1);
 gui.add(params, "Download_Image");
 function draw() {
-    background('black');
+    randomSeed(params.Random_Seed);
+    background('#1D1A37');
     noStroke();
-    background('#3C413B');
-    fill('#7B3F31');
-    ellipse(width / 2, height / 3, width / 1.8, width / 3);
-    ellipse(width / 2 - width / 4, height / 2 - height / 8, width / 4);
-    ellipse(width / 2 + width / 4, height / 2 - height / 8, width / 4);
-    fill('#FED7BC');
-    ellipse(width / 2, height / 2, width / 2);
-    fill('#FDFEFF');
-    ellipse(width / 2 - 80, height / 2 - 30, 100, 50);
-    ellipse(width / 2 + 80, height / 2 - 30, 100, 50);
-    fill('#5BAA5E');
-    ellipse(width / 2 - 80, height / 2 - 30, 30);
-    ellipse(width / 2 + 80, height / 2 - 30, 30);
-    fill('black');
-    ellipse(width / 2 - 80, height / 2 - 30, 10);
-    ellipse(width / 2 + 80, height / 2 - 30, 10);
-    fill('#7B3F31');
-    triangle(width / 2 - 140, height / 2 - 40, width / 2 - 40, height / 2 - 40, width / 2 - 40, height / 2 - 80);
-    triangle(width / 2 + 140, height / 2 - 40, width / 2 + 40, height / 2 - 40, width / 2 + 40, height / 2 - 80);
-    fill('#C37A6C');
-    triangle(width / 2 - 40, height / 2 + 20, width / 2 + 40, height / 2 + 20, width / 2, height / 2);
-    fill('#FDF6CC');
     rectMode(CENTER);
-    stroke('#DC7D77');
-    strokeWeight(4);
-    rect(width / 2, height / 2 + 80, 180, 80);
-    fill('#CCC7A5');
-    noStroke();
-    rect(width / 2, height / 2 + 80, 400, 4);
-    ellipse(mouseX, mouseY, params.Ellipse_Size);
+    fill(255, 255, 255, 20);
+    for (var i = 0; i < params.N / 2; i++) {
+        ellipse(random(width / 4, width - width / 4), random(height / 4, height - height / 4), random(20, 80));
+        ellipse(random(0, width), random(0, height), random(20, 80));
+    }
 }
 function setup() {
     p6_CreateCanvas();
